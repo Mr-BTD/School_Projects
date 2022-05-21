@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Uppgift 19 </title>
+</head>
+
+<body>
+    <button type="button" onclick="b()">guess my number</button>
+
+    <ul id="myList">
+    </ul>
+
+    <script>
+        function b() 
+        {
+            function a() 
+            {
+            
+                console.log(random_number);
+                let text = "";
+
+                var AnvändarensGissning = prompt("Gissa vilket tall");
+                if (AnvändarensGissning == random_number) {
+                    text = "DU Gissade Rätt"
+                    return AnvändarensGissning
+                } else if (AnvändarensGissning > random_number) {
+                    text = "Du gissade för mycket, correct number is " + random_number;
+                    return AnvändarensGissning
+                } else if (AnvändarensGissning < random_number) {
+                    text = "du gissade för lite,  correct number is " + random_number;
+                    return AnvändarensGissning
+                }
+                const node = document.createElement("li");
+
+                const textnode = document.createTextNode(text);
+
+                node.appendChild(textnode);
+
+                document.getElementById("myList").appendChild(node);
+
+            
+            
+            }
+            
+            
+            let random_number = Math.floor((Math.random() * 100) + 1);
+            
+            while (random_number != AnvändarensGissning)
+            {
+                AnvändarensGissning = a();
+            }
+    
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-    <html lang="en">
+   
+<html lang="en">
+
         <head>
+            
             <title> Uppgift 19 </title>
+            
             <style>
 
 
+
             </style>
+
         </head>
-
+        
         <body>
-        <input type="button" onclick="Random_Number();" value="Random Number"  />
-        <input type="button" onclick="Användaren_Gissar();" value="Gissa vilket tall"  />
-           <script>
-               function Random_Number() 
-               {
-               random_number = Math.round(Math.random()*100)
-               
-               }
-               function Användaren_Gissar() 
-               {
-                random_number = Random_Number();
-
-                AnvändarensGissning = prompt("Gissa vilket tall");
-                if (AnvändarensGissning = random_number) 
-                {
-                    window.alert("DU Gissade Rätt");
+        <p id ="Consoles"></p>
+        <br>
+        <br>
+        <button type="button" onclick="document.getElementById('demo').innerHTML">
+            Gissa tallet 
+        </button> 
+        <script>
+            function a() {
+                let random_number = Math.floor((Math.random() * 100) + 1);
+                console.log(random_number);
+    
+                var AnvändarensGissning = prompt("Gissa vilket tall");
+                if (AnvändarensGissning == random_number) {
+                    alert("DU Gissade Rätt");
+                } else if (AnvändarensGissning > random_number) {
+                    alert("Du gissade för mycket");
+                } else if (AnvändarensGissning < random_number) {
+                    alert("du gissade för lite");
                 }
-                else if (AnvändarensGissning > random_number) 
-                {   
-                    window.alert("Du gissade för mycket")
-                
-                }
-                else if (AnvändarensGissning < random_number)
-                {
-                    window.alert("du gissade för lite")
-               
-                }
-               }
-
-
-
-
-
-
-           </script> 
-
+            }
+        </script>
 
         </body>
-
 
 </html>
