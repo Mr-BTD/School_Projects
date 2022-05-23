@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<body>
+
+    
+
+<p id="guesstex"style="font-size: 45px">Guess:</p>
+<p id="interact" style="font-size: 40px"></p>
+<input type="text" id="input" maxlength="3" style="font-size: 30px">
+<button onclick="gues()" id="button" style="font-size: 30px;">ENTER</button>
+
+
+<script>
+
+    a = Math.floor(Math.random()*101);
+    b = 0;
+
+    function gues() {
+
+        b += 1;
+
+        if(document.getElementById("input").value == a){
+            document.getElementById("interact").innerHTML = "You won and it took only " + b + " tries";
+
+            setTimeout(function() {
+                window.location.reload(1);
+            },3000);
+        }
+
+        document.getElementById("last").innerHTML = "Last guess: " + document.getElementById("input").value;
+
+        if(document.getElementById("input").value > a){   
+            document.getElementById("input").select();
+            document.getElementById("interact").innerHTML = "&darr; Lower &darr;";
+        }
+        if(document.getElementById("input").value < a){   
+            document.getElementById("input").select();
+            document.getElementById("interact").innerHTML = "&uarr; Higher &uarr;";
+        }
+
+
+    }
+    document.getElementById("inout")
+    .addEventListener("keyup",function(event){
+        event.preventDefault();
+        if(event.keyCpde === 13){
+            document.getElementById("button").click();
+        }
+    });
+</script>
+<p id="last" style="font-size: 20px"></p>
+
+</body>
+</html>
