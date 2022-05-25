@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <head>
+      <meta charset="UTF-8" />
+      <title> JavaScript Guessing Game </title>
+    </head>
+    <body>
+    
+      <h1>Guess the Number!</h1>
+      <p>I am thinking of a number between 1 and 100. Can you guess what it is?</p>
+    <!-- Anvädarens interface / där du skriver din gissning -->
+      <label for="guess">My Guess</label>
+      <input type="number" id="guess">
+    
+      <!-- Knapp som sickar gissningen till javascripten -->  
+      <input type="submit" id="submitGuess" value="Check My Guess" onclick=" gissaChecken()">
+    
+      <!-- Text som ger användaren feedback, om den är högre eller läggre-->
+      <p id="feedback"></p>
+    
+    <script>
+    
+    // Const = en variabel som ej ändrar
+        const randomNumber = Math.floor(Math.random()*100)+ 1;
+        console.log('Random Number:', randomNumber);
+    
+    // Funktionen som kollar om Användarens gissning är lika som Random number
+        function gissaChecken() 
+        {
+    
+            // Detta är när man gör om Guess DOM till en variabeln
+            let myGuss = guess.value 
+
+    
+            // Kollar om anvädarens världe är lika med som Random number, högre, lägre.
+            if (myGuss === randomNumber)
+            {
+    
+                // Här sätter vi texten där vi ger Feedback till att anvädaren hade rätt
+                feedback.textContent  = "You got it right" 
+    
+            }
+            else if (myGuss > randomNumber)
+            {   
+    
+                // Här sätter vi texten där vi ger Feedback till att anvädarens tall var för mycket
+                feedback.textContent = "Your guess was " + myGuss + ". That's too high. Try Again!"
+    
+            }
+            else if (myGuss < randomNumber)
+    
+            {
+    
+                // Här sätter vi texten där vi ger Feedback till att anvädarens tall var för 
+                feedback.textContent = "Your guess was " + myGuss + ". That's too low. Try Again!"
+    
+            }
+        }
+
+        
+    </script>
+    
+    
+    </body>
+  </html>
