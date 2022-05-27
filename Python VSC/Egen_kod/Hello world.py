@@ -18,13 +18,13 @@ def Skapa_ord(hur_stort_ord,vilket_ord_vill_du_ha,alfabetet, Ord_listan):
     while not klart:
         ord = ""
         hur_många_gånger += 1
-        for i in range(0,hur_stort_ord): 
+        for i in range(0,3): 
             random_number = r.randint(1,27)
             
             ord = ord + alfabetet[random_number]
         
         # print(ord)    
-        if ord == vilket_ord_vill_du_ha.lower():
+        if ord == "hello world":
         
             klart = True
             print(hur_många_gånger)
@@ -36,10 +36,10 @@ def Skapa_ord(hur_stort_ord,vilket_ord_vill_du_ha,alfabetet, Ord_listan):
         
             klart = False
             Ord_listan.append(ord)
+            print(ord)
             continue
 
-
-vilket_ord_vill_du_ha = input("Hur ord vill du ha? ")
+vilket_ord_vill_du_ha = input("Vilket ord vill du ha? ")
 hur_stort_ord = int(len(vilket_ord_vill_du_ha))
 
 Skapa_ord(hur_stort_ord,vilket_ord_vill_du_ha,alfabetet, Ord_listan)
