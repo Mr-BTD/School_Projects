@@ -706,7 +706,7 @@
 
 
 #*_________________________________________________________________________________________________________________
-#* exception = Events detected during execution that interrupt the flow  of a program
+#* exception = Events detected during execution that interrupt the flow of a program
 
 #& try = Den kod som man försöker köra
 #& 
