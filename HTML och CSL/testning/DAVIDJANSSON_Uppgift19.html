@@ -4,7 +4,7 @@
       <title> JavaScript Guessing Game </title>
     </head>
     <body>
-    
+    <div>
       <h1>Guess the Number!</h1>
       <p>I am thinking of a number between 1 and 100. Can you guess what it is?</p>
     <!-- Anvädarens interface / där du skriver din gissning -->
@@ -16,12 +16,17 @@
     
       <!-- Text som ger användaren feedback, om den är högre eller läggre-->
       <p id="feedback"></p>
+    </div>
+
     
     <script>
     
     // Const = en variabel som ej ändrar
         const randomNumber = Math.floor(Math.random()*100)+ 1;
         console.log('Random Number:', randomNumber);
+    // Antal Gissingar är en variabel som kollar antalet Gissingar användaren gör 
+        let antalGissningar = 1
+        console.log('Antal gissningar:', antalGissningar)
     
     // Funktionen som kollar om Användarens gissning är lika som Random number
         function gissaChecken() 
@@ -29,22 +34,23 @@
     
             // Detta är när man gör om Guess DOM till en variabeln
             let myGuss = guess.value 
-
+            console.log(myGuss)
+            console.log(randomNumber)
+            
     
             // Kollar om anvädarens världe är lika med som Random number, högre, lägre.
-            if (myGuss === randomNumber)
+            if (myGuss == randomNumber)
             {
-    
                 // Här sätter vi texten där vi ger Feedback till att anvädaren hade rätt
-                feedback.textContent  = "You got it right" 
-    
+                feedback.textContent  = "You got it right and the amount of guesses it took you was: " + antalGissningar +" guesses" 
             }
             else if (myGuss > randomNumber)
             {   
     
                 // Här sätter vi texten där vi ger Feedback till att anvädarens tall var för mycket
                 feedback.textContent = "Your guess was " + myGuss + ". That's too high. Try Again!"
-    
+                antalGissningar = antalGissningar + 1
+                console.log('Gissningar: ',antalGissningar)
             }
             else if (myGuss < randomNumber)
     
@@ -52,7 +58,8 @@
     
                 // Här sätter vi texten där vi ger Feedback till att anvädarens tall var för 
                 feedback.textContent = "Your guess was " + myGuss + ". That's too low. Try Again!"
-    
+                antalGissningar = antalGissningar + 1
+                console.log('Gissningar: ',antalGissningar)
             }
         }
 
