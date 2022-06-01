@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Elev\\Desktop\\My program in VSC\\My program in VSC.csproj",
+      "projectUniqueName": "C:\\Users\\Elev\\Desktop\\VSC Python Code and Schollprodjects\\School_Projects\\My program in VSC\\My program in VSC.csproj",
       "projectName": "My program in VSC",
-      "projectPath": "C:\\Users\\Elev\\Desktop\\My program in VSC\\My program in VSC.csproj",
+      "projectPath": "C:\\Users\\Elev\\Desktop\\VSC Python Code and Schollprodjects\\School_Projects\\My program in VSC\\My program in VSC.csproj",
       "packagesPath": "C:\\Users\\Elev\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Elev\\Desktop\\My program in VSC\\obj\\",
+      "outputPath": "C:\\Users\\Elev\\Desktop\\VSC Python Code and Schollprodjects\\School_Projects\\My program in VSC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Elev\\AppData\\Roaming\\NuGet\\NuGet.Config"

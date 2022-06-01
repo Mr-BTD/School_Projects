@@ -1,14 +1,25 @@
 import random as rand
-from typing import ParamSpec
 
-def spel():
-    tärningar = 5
-    spelareDict = antalSpelerMänEllerDator()
-    spelÄrIgång = True
-    världeLista = []
+def Spel():
+    spelareDict = {} 
+    spelareDict = antalSpelerMänniskorEllerDatorer(spelareDict) #* Ett diriktiv om vilka splare som är en dator eller människa 
+    tärningar = 5 #* Det är antalet tärningar som är med i spelet
+    spelÄrIgång = True #* Detta är variabeln som säger om spelet är igång eller inte 
+    världeLista = [] #* en lisa på alla världen på tärningarna 
+    
+    
     while spelÄrIgång == True:
-        kastaOm = SparaEllerInte(tärningar)
-        världeLista = OmKasting(kastaOm,världeLista)
+        
+        print(
+            "\n\n______________________________________\n"
+            "\n 1. Kasta tärningar"
+            "\n 2. Poäng tavla "
+            ""
+            "_____________________________________\n\n"
+        )
+        
+        världeLista = Kasta(tärningar,världeLista)
+
         pass
 
 
@@ -41,7 +52,7 @@ def OmKasting (kastaOm,världeLista):
     
     
 
-def antalSpelerMänEllerDator():
+def antalSpelerMänniskorEllerDatorer(spelareDict):
     while True:
         spelareDict = {1:"Människa"}
 

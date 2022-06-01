@@ -11,3 +11,16 @@ C:\Users\Elev\Desktop\My program in VSC\obj\Debug\netcoreapp3.1\My program in VS
 C:\Users\Elev\Desktop\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.dll
 C:\Users\Elev\Desktop\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.pdb
 C:\Users\Elev\Desktop\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.genruntimeconfig.cache
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.exe
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.deps.json
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.runtimeconfig.json
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.runtimeconfig.dev.json
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.dll
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\bin\Debug\netcoreapp3.1\My program in VSC.pdb
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.csprojAssemblyReference.cache
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.csproj.CoreCompileInputs.cache
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.AssemblyInfoInputs.cache
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.AssemblyInfo.cs
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.dll
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.pdb
+C:\Users\Elev\Desktop\VSC Python Code and Schollprodjects\School_Projects\My program in VSC\obj\Debug\netcoreapp3.1\My program in VSC.genruntimeconfig.cache
