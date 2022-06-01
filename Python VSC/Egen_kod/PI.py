@@ -50,4 +50,3 @@ for i in range(3):
     pi = Pi(over1Eller0,antalXOchYVärlden)
         
     print(pi)
-
