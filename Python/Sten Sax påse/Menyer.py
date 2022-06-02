@@ -1,5 +1,5 @@
 import random as Slump
-import re
+
 
 def HuvudMeny(vilkenMeny,meny):
     meny = "HuvudMeny"
