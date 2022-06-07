@@ -5,9 +5,7 @@ pos_x = []
 pos_y = []
 avntåndsLista = []
 over1Eller0 = 0
-summanAvAllaTall = 0
-antalXOchYVärlden = 12345
-avarage = []
+antalXOchYVärlden = int(input("Hur många Punkter vill du skapa? "))
 
     
 def AvståndsFormeln(pos_x, pos_y):
@@ -29,24 +27,19 @@ def Pi(over1Eller0,antalXOchYVärlden):
     
     pi = (over1Eller0/antalXOchYVärlden) * 4
     return pi    
-    
-for i in range(3):
 
-    
-    pos_x.clear()
-    print(f"Detta är pos_x: {pos_x}")
-    
-    pos_y.clear()
-    print(f"Detta är pos_y: {pos_y}")
-    
-    for i in range(antalXOchYVärlden):
-        pos_x.append(r.random())
-        pos_y.append(r.random())
 
-    avsåtndsLista = AvståndsFormeln(pos_x, pos_y)
+#* =-=-=-=-=-=-= Main loop =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ 
+#* 
+for i in range(antalXOchYVärlden):
+    pos_x.append(r.random())
+    pos_y.append(r.random())
+
+avsåtndsLista = AvståndsFormeln(pos_x, pos_y)
+
+over1Eller0 = ÄrAvsådndetÖver1(avsåtndsLista,over1Eller0)
+
+pi = Pi(over1Eller0,antalXOchYVärlden)
     
-    over1Eller0 = ÄrAvsådndetÖver1(avsåtndsLista,over1Eller0)
-    
-    pi = Pi(over1Eller0,antalXOchYVärlden)
-        
-    print(pi)
+print(pi)
