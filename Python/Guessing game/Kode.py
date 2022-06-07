@@ -39,30 +39,42 @@ def GameMenu(NuvarandeNivå):
             
            Your current guess is {Guess}
           
-           Your last Guess's was:
-           {LastGuess}
-           
-           =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-           """)
+           Your last Guess's was:""")
+    # * Skiver ut de användarens gammla svar
+
+    for i in range(len(LastGuess)):
+        print(f"\n Guess {i+1} is {LastGuess[i]}")
+
+    print("""
+        \n\n      
+        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    """)
 
     AvändarensVal = input("What option do you want to? ")
 
     match AvändarensVal:
         case "1":
-            # GissaNumberet(Guess,LastGuess)
-            # for i in range(len(LastGuess)):
-            #     print(
-            #         """
-
-            #           """
-            #           )
-            print("hej")
+            Guess, LastGuess = GissaNumberet(LastGuess, Range, datornsNumber)
         case "2":  # * Gå tillbacka en meny
             return
+        case __:
+            pass
 
 
-def GissaNumberet():
-    pass
+def GissaNumberet(LastGuess, Range, datornsNumber):
+    Guess = input(f"\n Guess a number between 1 and {Range}? ")
+
+    if Guess.isnumeric:
+
+        if int(Guess) == datornsNumber:
+            print(
+                f"YOU WON YOU GUESSED THE RIHGT NUMBER, The number was {datornsNumber}")
+        else:
+            LastGuess.append(int(Guess))
+            Guess = str(Guess)
+
+    else:
+        print("ERROR! You did not type any number, try again and insert a number")
 
 
 def Options(NuvarandeNivå):
@@ -87,6 +99,8 @@ def Options(NuvarandeNivå):
 
         case "2":
             return
+        case __:
+            pass
 
 
 def ChangeDifficulty(GammlaNuvarandeNivå):
