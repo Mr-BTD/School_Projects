@@ -19,6 +19,7 @@
 
 import os as operativSystem
 import random as Slump
+import string
 import emoji as EM
 from time import sleep
 
@@ -83,7 +84,7 @@ def OptionForDifficulty(Difficulty):
 
     print(f"""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                                     Difficylty                      
+                                     Difficulty                      
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=         
         Current diffficulty: {Difficulty}
 _________________________________________________________________________________        
@@ -95,6 +96,7 @@ ________________________________________________________________________________
           \n""")
     UserDiffiycultyOptionChoice = input(
         "What of thies options do you want to do, TYPE: ")
+
     UserDiffiycultyOptionChoice = MenuLogic(UserDiffiycultyOptionChoice)
 
     match UserDiffiycultyOptionChoice:
@@ -118,23 +120,35 @@ ________________________________________________________________________________
 def Game():  # * Första menyn för Spelet
     pass
 # *_______________________________________________________________________________________________________________________
-#                                                      Menulogic
+# *                                                     Menulogic
 # *_______________________________________________________________________________________________________________________
 
 
 def MenuLogic(Menu):
     try:
-        if Menu.lower() == "one" or Menu.lower() == "two" or Menu.lower() == "three":
-            print("one")
-            Menu = int(Menu)
-        else:
-            if int(Menu) == int:
-                print("hej")
-                Menu = int(
-                    Menu)
+        Menu = str(Menu)
+
+        if Menu.isalpha() == True:
+            if Menu.lower() == "one":
+                Menu = 1
                 return Menu
-                # if 1 <= int(UserMainMenuChoice) >= 3:
-    except ValueError or TypeError:
+
+            elif Menu.lower() == "two":
+                Menu = 2
+                return Menu
+
+            elif Menu.lower() == "three":
+                Menu = 3
+                return Menu
+
+            elif Menu.lower() == "four":
+                Menu = 4
+                return Menu
+
+        elif Menu.isnumeric() == True:
+            Menu = int(Menu)
+            return Menu
+    except ValueError:
         print(f'''
 
       
@@ -152,7 +166,7 @@ def MenuLogic(Menu):
 # & Om det går igenom så gör man om användarens input till en integer (ett tall som kan bara vara ett heltal)
 
 # *_______________________________________________________________________________________________________________________
-#                                                      Huvud Meny
+# ?                                                     Huvud Meny
 # *_______________________________________________________________________________________________________________________
 
 
@@ -179,3 +193,9 @@ ________________________________________________________________________________
         case 2:
             print("Hej")
             Difficulty = Options(Difficulty)
+        case 3:
+            GameRunning = False
+
+    print("hej")
+# ClearTerminal()
+print("thx for playing")
