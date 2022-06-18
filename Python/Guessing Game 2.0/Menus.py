@@ -56,11 +56,10 @@ def ClearTerminal():
 # * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # *                                       Spelet
 # * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-#  ----------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------
 #                                                      Options
-#  ----------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------
 
-# Meny bred: 81
 
 def Options(Difficulty):  # * Detta är den första menyn av Option
     print("""
@@ -73,27 +72,7 @@ ________________________________________________________________________________
           \n""")
     UserOptionChoice = input("What of thies options do you want to do, TYPE: ")
 
-# & Kollar om det som Användaren har medget är en av de saker som man har medget
-    try:
-        if UserOptionChoice.lower() == "one" or UserOptionChoice.lower() == "two":
-            UserOptionChoice = int(UserOptionChoice)
-        else:
-            if type(UserOptionChoice) == int:
-                if 1 <= int(UserOptionChoice) >= 4:
-                    UserOptionChoice = int(
-                        UserOptionChoice)
-
-    except ValueError or TypeError:
-        print(f'''
-
-      
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-   You did not wright the right type of number, please try again in 10 sec :D    
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-
-
-              ''')
-        sleep(15)
+    UserOptionChoice = MenuLogic(UserOptionChoice)
 
     match UserOptionChoice:
         case 1:
@@ -116,26 +95,7 @@ ________________________________________________________________________________
           \n""")
     UserDiffiycultyOptionChoice = input(
         "What of thies options do you want to do, TYPE: ")
-    try:
-        if UserDiffiycultyOptionChoice.lower() == "one" or UserDiffiycultyOptionChoice.lower() == "two" or UserDiffiycultyOptionChoice.lower() == "three" or UserDiffiycultyOptionChoice.lower() == "four":
-            UserDiffiycultyOptionChoice = int(UserDiffiycultyOptionChoice)
-        else:
-            if type(UserDiffiycultyOptionChoice) == int:
-                if 1 <= int(UserDiffiycultyOptionChoice) >= 4:
-                    UserDiffiycultyOptionChoice = int(
-                        UserDiffiycultyOptionChoice)
-
-    except ValueError or TypeError:
-        print(f'''
-
-      
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-   You did not wright the right type of number, please try again in 10 sec :D    
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-
-
-              ''')
-        sleep(15)
+    UserDiffiycultyOptionChoice = MenuLogic(UserDiffiycultyOptionChoice)
 
     match UserDiffiycultyOptionChoice:
         case 1:
@@ -157,11 +117,43 @@ ________________________________________________________________________________
 
 def Game():  # * Första menyn för Spelet
     pass
+# *_______________________________________________________________________________________________________________________
+#                                                      Menulogic
+# *_______________________________________________________________________________________________________________________
 
 
-#  ----------------------------------------------------------------------------------------------------------------------------
+def MenuLogic(Menu):
+    try:
+        if Menu.lower() == "one" or Menu.lower() == "two" or Menu.lower() == "three":
+            print("one")
+            Menu = int(Menu)
+        else:
+            if int(Menu) == int:
+                print("hej")
+                Menu = int(
+                    Menu)
+                return Menu
+                # if 1 <= int(UserMainMenuChoice) >= 3:
+    except ValueError or TypeError:
+        print(f'''
+
+      
+{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
+   You did not wright the right type of number, please try again in 10 sec :D    
+{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
+
+
+              ''')
+        sleep(15)
+
+# & Koden åvan för kollar om användarens input är en siffra eller inte eller i rätt range
+# & om det är ej en sifra eller 1-3 så kommer det bli ett error vid if satsen så
+# & Körs det om igen och ger användaren en förklaring varför det ej fungerade
+# & Om det går igenom så gör man om användarens input till en integer (ett tall som kan bara vara ett heltal)
+
+# *_______________________________________________________________________________________________________________________
 #                                                      Huvud Meny
-#  ----------------------------------------------------------------------------------------------------------------------------
+# *_______________________________________________________________________________________________________________________
 
 
 while GameRunning == "True":
@@ -179,35 +171,7 @@ ________________________________________________________________________________
     UserMainMenuChoice = input(
         "What of thies options do you want to do, TYPE: ")
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    try:
-        if UserMainMenuChoice.lower() == "one" or UserMainMenuChoice.lower() == "two" or UserMainMenuChoice.lower() == "three":
-            print("one")
-            UserMainMenuChoice = int(UserMainMenuChoice)
-        else:
-            if int(UserMainMenuChoice) == int:
-                print("hej")
-                UserMainMenuChoice = int(
-                    UserMainMenuChoice)
-                # if 1 <= int(UserMainMenuChoice) >= 3:
-    except ValueError or TypeError:
-        print(f'''
-
-      
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-   You did not wright the right type of number, please try again in 10 sec :D    
-{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
-
-
-              ''')
-        sleep(15)
-        continue
-
-# & Koden åvan för kollar om användarens input är en siffra eller inte eller i rätt range
-# & om det är ej en sifra eller 1-3 så kommer det bli ett error vid if satsen så
-# & Körs det om igen och ger användaren en förklaring varför det ej fungerade
-# & Om det går igenom så gör man om användarens input till en integer (ett tall som kan bara vara ett heltal)
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    UserMainMenuChoice = MenuLogic(UserMainMenuChoice)
 
     match UserMainMenuChoice:
         case 1:
@@ -215,20 +179,3 @@ ________________________________________________________________________________
         case 2:
             print("Hej")
             Difficulty = Options(Difficulty)
-
-
-#  ----------------------------------------------------------------------------------------------------------------------------
-#                                                      Options
-#  ----------------------------------------------------------------------------------------------------------------------------
-
-
-def Options():
-    pass
-
-
-#  ----------------------------------------------------------------------------------------------------------------------------
-#                                                      Game
-#  ----------------------------------------------------------------------------------------------------------------------------
-
-def Game():
-    pass
