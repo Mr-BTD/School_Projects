@@ -1,4 +1,3 @@
-
 # * I detta Filen så ligger alla olika funktioner som används.
 # * De går i den ordningen som de går i programet efter.
 # * Spelt kommer också vara på Engelska så att alla kan spela det.
@@ -19,7 +18,6 @@
 
 import os as operativSystem
 import random as Slump
-import string
 import emoji as EM
 from time import sleep
 
@@ -29,7 +27,7 @@ from time import sleep
 # ^ Golabla Variablar
 
 Difficulty = "Easy"
-GameRunning = "True"
+GameRunning = True
 
 # * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -53,6 +51,8 @@ def ClearTerminal():
         Comand = 'cls'
     operativSystem.system(Comand)
 
+# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 
 # * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # *                                       Spelet
@@ -61,8 +61,44 @@ def ClearTerminal():
 #                                                      Options
 # ----------------------------------------------------------------------------------------------------------------------------
 
+def OptionForDifficulty(Difficulty):
+    ClearTerminal()
+    print(f"""
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                                     Difficulty                      
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=         
+        Current diffficulty: {Difficulty}
+_________________________________________________________________________________        
+        1. Easy                          |          TYPE: 1
+        2. Medium                        |          TYPE: 2
+        3. Hard                          |          TYPE: 3
+        4. Quit                          |          TYPE: 4
+_________________________________________________________________________________
+          \n""")
+    UserDiffiycultyOptionChoice = input(
+        "What of these options do you want to do, TYPE: ")
+
+    UserDiffiycultyOptionChoice = MenuLogic(UserDiffiycultyOptionChoice)
+
+    match UserDiffiycultyOptionChoice:
+        case 1:
+            Difficulty = "Easy"
+            return Difficulty, Options(Difficulty)
+
+        case 2:
+            Difficulty = "Medium"
+            return Difficulty, Options(Difficulty)
+
+        case 3:
+            Difficulty = "Hard"
+            return Difficulty, Options(Difficulty)
+
+        case 4:
+            return Options(Difficulty)
+
 
 def Options(Difficulty):  # * Detta är den första menyn av Option
+    ClearTerminal()
     print("""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                                      Game Option                      
@@ -71,53 +107,23 @@ def Options(Difficulty):  # * Detta är den första menyn av Option
         2. Quit                          |          TYPE: 2
 _________________________________________________________________________________
           \n""")
-    UserOptionChoice = input("What of thies options do you want to do, TYPE: ")
+    UserOptionChoice = input("What of these options do you want to do, TYPE: ")
 
     UserOptionChoice = MenuLogic(UserOptionChoice)
 
     match UserOptionChoice:
         case 1:
-            Difficulty = OptionForDifficulty(Difficulty)
+            return OptionForDifficulty(Difficulty)
 
-
-def OptionForDifficulty(Difficulty):
-
-    print(f"""
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                                     Difficulty                      
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=         
-        Current diffficulty: {Difficulty}
-_________________________________________________________________________________        
-        1. Easy                          |          TYPE: 1
-        2. Easy                          |          TYPE: 1
-        3. Easy                          |          TYPE: 1
-        4. Quit                          |          TYPE: 2
-_________________________________________________________________________________
-          \n""")
-    UserDiffiycultyOptionChoice = input(
-        "What of thies options do you want to do, TYPE: ")
-
-    UserDiffiycultyOptionChoice = MenuLogic(UserDiffiycultyOptionChoice)
-
-    match UserDiffiycultyOptionChoice:
-        case 1:
-            Difficulty = "easy"
-            return Difficulty
         case 2:
-            Difficulty = "medium"
             return Difficulty
-        case 3:
-            Difficulty = "hard"
-            return Difficulty
-        case 4:
-            return
-
 
 #  ----------------------------------------------------------------------------------------------------------------------------
 #                                                      Game
 #  ----------------------------------------------------------------------------------------------------------------------------
 
-def Game():  # * Första menyn för Spelet
+
+def Game(Difficulty):  # * Första menyn för Spelet
     pass
 # *_______________________________________________________________________________________________________________________
 # *                                                     Menulogic
@@ -129,6 +135,7 @@ def MenuLogic(Menu):
         Menu = str(Menu)
 
         if Menu.isalpha() == True:
+
             if Menu.lower() == "one":
                 Menu = 1
                 return Menu
@@ -146,22 +153,23 @@ def MenuLogic(Menu):
                 return Menu
 
         elif Menu.isnumeric() == True:
+
             Menu = int(Menu)
             return Menu
-    except ValueError:
-        print(f'''
 
+    except ValueError:
+        ClearTerminal()
+        print(f'''
       
 {EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
    You did not wright the right type of number, please try again in 10 sec :D    
 {EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
 
-
               ''')
         sleep(15)
 
 # & Koden åvan för kollar om användarens input är en siffra eller inte eller i rätt range
-# & om det är ej en sifra eller 1-3 så kommer det bli ett error vid if satsen så
+# & om det är ej en sifra eller 1-4 så kommer det bli ett error vid if satsen så
 # & Körs det om igen och ger användaren en förklaring varför det ej fungerade
 # & Om det går igenom så gör man om användarens input till en integer (ett tall som kan bara vara ett heltal)
 
@@ -170,8 +178,8 @@ def MenuLogic(Menu):
 # *_______________________________________________________________________________________________________________________
 
 
-while GameRunning == "True":
-    # ClearTerminal()
+while GameRunning == True:
+    ClearTerminal()
     print("""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                       Welcome to the game GUESS THAT NUMBER                      
@@ -183,7 +191,7 @@ ________________________________________________________________________________
           \n""")
 
     UserMainMenuChoice = input(
-        "What of thies options do you want to do, TYPE: ")
+        "What of these options do you want to do, TYPE: ")
 
     UserMainMenuChoice = MenuLogic(UserMainMenuChoice)
 
@@ -191,11 +199,17 @@ ________________________________________________________________________________
         case 1:
             Game(Difficulty)
         case 2:
-            print("Hej")
             Difficulty = Options(Difficulty)
         case 3:
             GameRunning = False
+        case nul:
+            print(f'''
+      
+{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
+   You did not wright the right type of number, please try again in 10 sec :D    
+{EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
 
-    print("hej")
-# ClearTerminal()
-print("thx for playing")
+              ''')
+            sleep(15)
+ClearTerminal()
+print("Thx for playing")
