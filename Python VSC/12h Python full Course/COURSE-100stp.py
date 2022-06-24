@@ -614,7 +614,7 @@
 
 
 #~def hello(**kwargs): 
-    #& inom dessa () så kan  kwargs bytas ut till vad som helst, då det viktigaste är **
+    #& inom dessa () så kan kwargs bytas ut till vad som helst, då det viktigaste är **
 
 #? Exempel 1:
     #print("Hello " + kwargs["first"] + " " + kwargs["last"])

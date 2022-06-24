@@ -53,16 +53,41 @@ def ClearTerminal():
 
 # * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+# *  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#                                                               Options
+# *  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# *                                       Spelet
-# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# ----------------------------------------------------------------------------------------------------------------------------
-#                                                      Options
-# ----------------------------------------------------------------------------------------------------------------------------
+
+def Options(Difficulty):  # * Detta är den första menyn av Option
+    # ClearTerminal()
+    print("""
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                                     Game Option                      
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=         
+        1. Difficulty                    |          TYPE: 1
+        2. Quit                          |          TYPE: 2
+_________________________________________________________________________________
+          \n""")
+    UserOptionChoice = input("What of these options do you want to do, TYPE: ")
+
+    UserOptionChoice = MenuLogic(UserOptionChoice)
+
+    match UserOptionChoice:
+        case 1:
+            return OptionForDifficulty(Difficulty)
+
+        case 2:
+            return Difficulty
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#                                                       Difficulty
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# & Detta är den menyn som ändrar svårhetsgraden på spelet.
+
 
 def OptionForDifficulty(Difficulty):
-    ClearTerminal()
+    # ClearTerminal()
     print(f"""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                                      Difficulty                      
@@ -97,34 +122,165 @@ ________________________________________________________________________________
             return Options(Difficulty)
 
 
-def Options(Difficulty):  # * Detta är den första menyn av Option
-    ClearTerminal()
-    print("""
+# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# *                                                           Game
+# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+def GameOption(Difficulty):  # * Första menyn för Spelet
+    # ClearTerminal()
+    LastGuess = None
+    Feedback = None
+
+    match Difficulty:
+
+        case "Easy":
+            Range = 100
+            life = 10
+
+        case "Medium":
+            Range = 500
+            life = 5
+
+        case "Hard":
+            Range = 1000
+            life = 2
+
+    print(f'''
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                                     Game Option                      
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=         
-        1. Difficulty                    |          TYPE: 1
-        2. Quit                          |          TYPE: 2
+                                      The Game                   
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=          
+
+        I am Thinking about a number between 1-{Range}. 
+        You have {life} and you lose 1 after 10 or more wrong guesses
+         
 _________________________________________________________________________________
-          \n""")
-    UserOptionChoice = input("What of these options do you want to do, TYPE: ")
+              ''')
 
-    UserOptionChoice = MenuLogic(UserOptionChoice)
+    GamePlayMenu1 = input("Are You ready to play?? (YES or NO)  ").lower()
 
-    match UserOptionChoice:
+    match GamePlayMenu1:
+
+        case "yes":
+            GameplayIsOn = True
+            ComputerGuess = Slump.randint(1, Range)
+            Game(GameplayIsOn, ComputerGuess, Range, life, Feedback, LastGuess)
+        case "no":
+            return
+
+
+def Game(GameplayIsOn, ComputerGuess, Range, life, Feedback, LastGuess):
+    Guess = None
+    while GameplayIsOn == True or life > 0:
+        # ClearTerminal()
+        LastGuess = Guess
+        Guess = None
+
+        print(f'''
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                                      Game                   
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=          
+               1. Guess the Number     |          TYPE: 1
+                                       |
+               Last guess: {LastGuess}          | High or lower: {Feedback}      
+_________________________________________________________________________________
+               2. Quit                 |          TYPE: 2
+_________________________________________________________________________________
+              ''')
+        GamePlayMenu2 = input(
+            "What of these options do you want to do, TYPE: ")
+
+        GamePlayMenu2 = MenuLogic(GamePlayMenu2)
+
+        match GamePlayMenu2:
+
+            case 1:
+                ClearTerminal()
+                Guess = input(f"Guess your number between 1-{Range}")
+                if Guess.isnumeric():
+                    Guess = int(Guess)
+                    if Guess > 0:
+                        Guess = Guess
+                    else:
+                        Guess = None
+                else:
+                    continue
+                if Feedback != ComputerGuess:
+                    Feedback = CheckingIfLowerOrHigher(
+                        Guess, ComputerGuess, Feedback)
+                    continue
+                else:
+                    print('''
+_______________________________________________________________________________    
+                        
+               YOU WON, THE AMOUNT OF TURNS IT TOOK YOU WORE {Turns}
+                    AND THE RIGHT NUMBER WAS {ComputerGuess}                                         
+_______________________________________________________________________________                          
+                          ''')
+                    break
+
+            case 2:
+                return
+
+    ClearTerminal()
+    GamePlayMenu3 = input('''
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                        Do you want to play again                      
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=          
+        1. Yes                      |          TYPE: 1/Yes
+        2. No                       |          TYPE: 2/No
+_______________________________________________________________________________
+
+What option do u want to do?: ''')
+
+    if GamePlayMenu3.isalpha():
+        if GamePlayMenu3.lower() == "yes":
+            AwnserGamePlayMenu3 = 1
+        elif GamePlayMenu3.lower() == "no":
+            AwnserGamePlayMenu3 = 0
+
+    elif GamePlayMenu3.isnumeric():
+        if GamePlayMenu3 == "1":
+            AwnserGamePlayMenu3 = 1
+        elif GamePlayMenu3 == "2":
+            AwnserGamePlayMenu3 = 0
+
+    match AwnserGamePlayMenu3:
+
         case 1:
-            return OptionForDifficulty(Difficulty)
+            return GameOption(Difficulty)
 
-        case 2:
-            return Difficulty
-
-#  ----------------------------------------------------------------------------------------------------------------------------
-#                                                      Game
-#  ----------------------------------------------------------------------------------------------------------------------------
+        case 0:
+            return
 
 
-def Game(Difficulty):  # * Första menyn för Spelet
-    pass
+def CheckingIfLowerOrHigher(Guess, Computer, Feedback):
+    Guess = int(Guess)
+    Computer = int(Computer)
+
+    if Guess > Computer:
+        print(f'''
+      
+{EM.emojize(":arrow_down:")}                                                                             {EM.emojize(":arrow_down:")} 
+   You did not get it right but the real number is lower then your awnser: {Guess}   
+{EM.emojize(":arrow_down:")}                                                                             {EM.emojize(":arrow_down:")} 
+
+              ''')
+        Feedback = EM.emojize(":arrow_down:")
+        return Game(Feedback)
+
+    elif Guess < Computer:
+        print(f'''
+      
+{EM.emojize(":arrow_up:")}                                                                             {EM.emojize(":arrow_up:")} 
+   You did not get it right but the real number is higher then your awnser: {Guess}   
+{EM.emojize(":arrow_up:")}                                                                             {EM.emojize(":arrow_up:")} 
+
+              ''')
+        Feedback = EM.emojize(":arrow_up:")
+        return Feedback
+
+
 # *_______________________________________________________________________________________________________________________
 # *                                                     Menulogic
 # *_______________________________________________________________________________________________________________________
@@ -158,7 +314,7 @@ def MenuLogic(Menu):
             return Menu
 
     except ValueError:
-        ClearTerminal()
+        # ClearTerminal()
         print(f'''
       
 {EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
@@ -179,7 +335,7 @@ def MenuLogic(Menu):
 
 
 while GameRunning == True:
-    ClearTerminal()
+    # ClearTerminal()
     print("""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                       Welcome to the game GUESS THAT NUMBER                      
@@ -197,7 +353,7 @@ ________________________________________________________________________________
 
     match UserMainMenuChoice:
         case 1:
-            Game(Difficulty)
+            GameOption(Difficulty)
         case 2:
             Difficulty = Options(Difficulty)
         case 3:
@@ -211,5 +367,5 @@ ________________________________________________________________________________
 
               ''')
             sleep(15)
-ClearTerminal()
+# ClearTerminal()
 print("Thx for playing")
