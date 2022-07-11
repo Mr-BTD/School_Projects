@@ -51,15 +51,13 @@ def ClearTerminal():
         Comand = 'cls'
     operativSystem.system(Comand)
 
-# * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 # *  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #                                                               Options
 # *  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
 def Options(Difficulty):  # * Detta är den första menyn av Option
-    # ClearTerminal()
+    ClearTerminal()
     print("""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                                      Game Option                      
@@ -87,7 +85,7 @@ ________________________________________________________________________________
 
 
 def OptionForDifficulty(Difficulty):
-    # ClearTerminal()
+    ClearTerminal()
     print(f"""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                                      Difficulty                      
@@ -128,7 +126,7 @@ ________________________________________________________________________________
 
 
 def GameOption(Difficulty):  # * Första menyn för Spelet
-    # ClearTerminal()
+    ClearTerminal()
     LastGuess = None
     Feedback = None
 
@@ -172,7 +170,7 @@ ________________________________________________________________________________
 def Game(GameplayIsOn, ComputerGuess, Range, life, Feedback, LastGuess):
     Guess = None
     while GameplayIsOn == True or life > 0:
-        # ClearTerminal()
+        ClearTerminal()
         LastGuess = Guess
         Guess = None
 
@@ -314,7 +312,7 @@ def MenuLogic(Menu):
             return Menu
 
     except ValueError:
-        # ClearTerminal()
+        ClearTerminal()
         print(f'''
       
 {EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
@@ -335,7 +333,7 @@ def MenuLogic(Menu):
 
 
 while GameRunning == True:
-    # ClearTerminal()
+    ClearTerminal()
     print("""
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                       Welcome to the game GUESS THAT NUMBER                      
@@ -367,5 +365,5 @@ ________________________________________________________________________________
 
               ''')
             sleep(15)
-# ClearTerminal()
+ClearTerminal()
 print("Thx for playing")
