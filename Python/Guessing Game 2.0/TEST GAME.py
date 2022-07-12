@@ -8,7 +8,8 @@ from time import sleep
 Difficulty = "Easy"
 
 
-def PlayAgain()
+def PlayAgain():
+    passa
 
 
 def Game(Difficulty):  # * Första menyn för Spelet

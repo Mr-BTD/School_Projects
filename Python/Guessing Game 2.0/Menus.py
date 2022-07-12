@@ -320,7 +320,7 @@ def MenuLogic(Menu):
 {EM.emojize(":warning:")}                                                                             {EM.emojize(":warning:")} 
 
               ''')
-        sleep(15)
+        sleep(10)
 
 # & Koden åvan för kollar om användarens input är en siffra eller inte eller i rätt range
 # & om det är ej en sifra eller 1-4 så kommer det bli ett error vid if satsen så
